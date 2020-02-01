@@ -9,12 +9,21 @@ package frc.robot.subsystems;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
+import frc.robot.Constants;
 public class Drivetrain extends SubsystemBase {
   /**
    * Creates a new Drivetrain.
    */
-  public Drivetrain() {
+  private final TalonSRX m_leftMotor = new TalonSRX(Constants.m_leftMotorPort);
 
+ 
+  public Drivetrain() {    
   }
 
   @Override
@@ -23,12 +32,17 @@ public class Drivetrain extends SubsystemBase {
     
   }
 
+  public void driveFoward(double d){
+    m_leftMotor.set(ControlMode.PercentOutput,d);
+    
+  }
+
   public void returnMessage(){
     if (Robot.numberOfChange < 3) {
       System.out.println("from returnMessage: The color has been changed" + Robot.numberOfChange + " times from" + Robot.initialColor);
-    }else{
-      
-    }
-        
+    }else{      
+    }        
   }
+
+  
 }

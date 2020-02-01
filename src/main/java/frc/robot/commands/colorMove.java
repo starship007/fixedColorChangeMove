@@ -30,6 +30,13 @@ public class colorMove extends CommandBase {
   @Override
   public void execute() {
     m_Drivetrain.returnMessage();
+
+    if (Robot.numberOfChange < 3) {
+      m_Drivetrain.driveFoward(0.2);
+    }else{
+      m_Drivetrain.driveFoward(0);
+    }
+    
   }
 
   // Called once the command ends or is interrupted.
